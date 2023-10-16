@@ -13,9 +13,9 @@ import {
 import { environment } from 'src/environment/environment';
 import {
  ApiLoginResponse,
- apiGetAllUsersResponse,
- apiRegisterResponse,
- apiUpdateResponse,
+ ApiGetAllUsersResponse,
+ ApiRegisterResponse,
+ ApiUpdateResponse,
 } from 'src/app/interfaces/interfaces';
 
 describe('UserServiceService', () => {
@@ -43,7 +43,7 @@ describe('UserServiceService', () => {
     expect(httpTestingController).toBeTruthy();
     const req = httpTestingController.expectOne(environment.urlRegister);
     expect(req.request.method).toEqual('POST');
-    req.flush({} as apiRegisterResponse);
+    req.flush({} as ApiRegisterResponse);
    });
   });
  });
@@ -71,7 +71,7 @@ describe('UserServiceService', () => {
     expect(httpTestingController).toBeTruthy();
     const res = httpTestingController.expectOne(environment.urlEditUser + '21');
     expect(res.request.method).toEqual('PUT');
-    res.flush({} as apiUpdateResponse);
+    res.flush({} as ApiUpdateResponse);
    });
   });
  });
@@ -85,7 +85,7 @@ describe('UserServiceService', () => {
     expect(httpTestingController).toBeTruthy();
     const resp = httpTestingController.expectOne(environment.urlBasic);
     expect(resp.request.method).toEqual('GET');
-    resp.flush({} as apiGetAllUsersResponse);
+    resp.flush({} as ApiGetAllUsersResponse);
    });
   });
  });
@@ -104,7 +104,7 @@ describe('UserServiceService', () => {
      environment.urlAddRelation + mockUser.id + '/1234'
     );
     expect(resp.request.method).toEqual('PATCH');
-    resp.flush({} as apiUpdateResponse);
+    resp.flush({} as ApiUpdateResponse);
    });
   });
  });
@@ -122,7 +122,7 @@ describe('UserServiceService', () => {
      environment.urlAddRelation + mockUser.id + '/1234'
     );
     expect(resp.request.method).toEqual('PATCH');
-    resp.flush({} as apiUpdateResponse);
+    resp.flush({} as ApiUpdateResponse);
    });
   });
  });

@@ -25,15 +25,15 @@ export interface ApiLoginResponse {
  };
 }
 
-export interface apiRegisterResponse {
+export interface ApiRegisterResponse {
  message: string;
 }
 
-export interface apiUpdateResponse {
+export interface ApiUpdateResponse {
  results: [User];
 }
 
-export interface apiGetAllUsersResponse {
+export interface ApiGetAllUsersResponse {
  results: {
   data: User[];
  };

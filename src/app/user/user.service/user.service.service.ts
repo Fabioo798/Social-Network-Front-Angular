@@ -6,9 +6,9 @@ import {
  RegisterUser,
  User,
  ApiLoginResponse,
- apiUpdateResponse,
- apiGetAllUsersResponse,
- apiRegisterResponse,
+ ApiUpdateResponse,
+ ApiGetAllUsersResponse,
+ ApiRegisterResponse,
 } from 'src/app/interfaces/interfaces';
 import * as jose from 'jose';
 import { environment } from 'src/environment/environment';
@@ -34,15 +34,15 @@ export class UserService {
   };
  }
 
- registerUser(user: RegisterUser): Observable<apiRegisterResponse> {
-  return this.http.post<apiRegisterResponse>(this.api.urlRegister, user);
+ registerUser(user: RegisterUser): Observable<ApiRegisterResponse> {
+  return this.http.post<ApiRegisterResponse>(this.api.urlRegister, user);
  }
 
  loginUser(user: LoginUser): Observable<ApiLoginResponse> {
   return this.http.post<ApiLoginResponse>(this.api.urlLogin, user).pipe(
    map((resp: ApiLoginResponse) => {
     this.token$.next(resp.results.token);
-    localStorage.setItem('Token', resp.results.token as string);
+    localStorage.setItem('Token', resp.results.token);
     const userInfo: Partial<User> = jose.decodeJwt(
      resp.results.token
     ) as Partial<User>;
@@ -52,24 +52,24 @@ export class UserService {
   );
  }
 
- editUser(id: string, user: Partial<User>): Observable<apiUpdateResponse> {
-  return this.http.put<apiUpdateResponse>(
+ editUser(id: string, user: Partial<User>): Observable<ApiUpdateResponse> {
+  return this.http.put<ApiUpdateResponse>(
    this.api.urlEditUser + id,
    user,
    this.headers
   );
  }
 
- getUsers(): Observable<apiGetAllUsersResponse> {
-  return this.http.get<apiGetAllUsersResponse>(this.api.urlBasic, this.headers);
+ getUsers(): Observable<ApiGetAllUsersResponse> {
+  return this.http.get<ApiGetAllUsersResponse>(this.api.urlBasic, this.headers);
  }
 
  addRelation(
   userId: string,
   targetUserId: string,
   relation: string
- ): Observable<apiUpdateResponse> {
-  return this.http.patch<apiUpdateResponse>(
+ ): Observable<ApiUpdateResponse> {
+  return this.http.patch<ApiUpdateResponse>(
    this.api.urlAddRelation + `${userId}/${targetUserId}`,
    { relation: relation },
    this.headers
@@ -79,8 +79,8 @@ export class UserService {
   userId: string,
   targetUserId: string,
   relation: string
- ): Observable<apiUpdateResponse> {
-  return this.http.patch<apiUpdateResponse>(
+ ): Observable<ApiUpdateResponse> {
+  return this.http.patch<ApiUpdateResponse>(
    this.api.urlRemoveRelation + `${userId}/${targetUserId}`,
    { relation: relation },
    this.headers
