@@ -1,14 +1,16 @@
 import { LoginUser, RegisterUser, User } from './app/interfaces/interfaces';
 
+export const mockPass: string = 'test';
+
 export const mockRegisterUser: RegisterUser = {
  name: 'test',
  email: 'test',
- password: 'test',
+ password: mockPass,
 };
 
 export const mockLoginUser: LoginUser = {
  email: 'test',
- password: 'test',
+ password: mockPass,
 };
 
 export const mockUser: Partial<User> = {
@@ -17,7 +19,7 @@ export const mockUser: Partial<User> = {
  email: 'test',
  friends: [],
  enemies: [],
-}
+};
 
 export const mockToken: string = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
   .eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ
