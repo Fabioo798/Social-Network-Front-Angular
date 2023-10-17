@@ -1,4 +1,4 @@
-import { LoginUser, RegisterUser, User } from './app/interfaces/interfaces';
+import { LoginUser, RegisterUser, User } from '../interfaces/interfaces';
 
 export const mockPass: string = 'test';
 

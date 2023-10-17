@@ -9,7 +9,7 @@ import {
  mockRegisterUser,
  mockToken,
  mockUser,
-} from 'src/mocks';
+} from 'src/app/utils/mocks';
 import { environment } from 'src/environment/environment';
 import {
  ApiLoginResponse,
